@@ -16,7 +16,7 @@ const CartPage = () => {
     try {
       setLoading(true);
       setError(null);
-      const response = await fetch('http://localhost:5000/api/ads', {
+      const response = await fetch('https://backend-mern-stack-aqarjadah.vercel.app/api/ads', {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("token")}`
         }
@@ -337,5 +337,6 @@ const CartPage = () => {
     </div>
   );
 };
+
 
 export default CartPage;
