@@ -43,7 +43,7 @@ const LoginPage = () => {
     console.log("Attempting login with:", formData.email);
 
     try {
-      const res = await fetch("https://backend-mern-stack-aqarjadah-ccj5.vercel.app/api/auth/login", {
+      const res = await fetch("https://backend-mern-stack-aqarjadah.vercel.app/api/auth/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ 
@@ -446,3 +446,4 @@ const LoginPage = () => {
 
 
 export default LoginPage;
+
