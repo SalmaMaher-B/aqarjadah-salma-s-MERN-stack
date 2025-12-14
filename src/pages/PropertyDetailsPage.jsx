@@ -278,9 +278,37 @@ const PropertyDetailsPage = ( ) => {
                     style={{ fontSize: 28, color: colors.accent, padding: 0 }}
                  />
               ) : (
-                <h1 style={{ margin: 0, color: colors.accent, fontSize: 28 }}>
-                    {propertyData.title}
-                </h1>
+                <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
+  <label style={{ fontSize: 14, color: "#94a3b8" }}>عنوان العقار</label>
+  <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
+    <FaEdit style={{ color: "#93c5fd" }} />
+    <input
+      type="text"
+      name="title"
+      value={propertyData.title}
+      onChange={handleInputChange}
+      readOnly={!isEditMode}
+      style={{
+        background: "rgba(255,255,255,0.03)",
+        border: `1px solid ${
+          !isEditMode
+            ? "rgba(255,255,255,0.1)"
+            : "rgba(59,130,246,0.5)"
+        }`,
+        borderRadius: 16,
+        padding: "12px 20px",
+        color: colors.accent,
+        width: "100%",
+        fontSize: 28,
+        fontWeight: 700,
+        outline: "none",
+        cursor: !isEditMode ? "default" : "text"
+      }}
+      placeholder="عنوان العقار"
+    />
+  </div>
+</div>
+
               )}
               <p style={{ margin: '8px 0 0', color: '#94a3b8' }}>
                 {!isEditMode && (
@@ -582,110 +610,111 @@ const PropertyDetailsPage = ( ) => {
 </div>
 
 
+
             {/* Stats */}
-            {!isWanted && (
-             <div
-  style={{
-    display: "grid",
-    gridTemplateColumns: "repeat(auto-fit,minmax(180px,1fr))",
-    gap: 16
-  }}
->
-  {/* المساحة */}
-  <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
-    <label style={{ fontSize: 14, color: "#94a3b8" }}>المساحة</label>
-    <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
-      <FaRulerCombined style={{ color: "#fcd34d" }} />
-      <input
-        type="text"
-        name="area"
-        value={propertyData.area}
-        onChange={handleInputChange}
-        readOnly={!isEditMode}
-        style={{
-          background: "rgba(255,255,255,0.03)",
-          border: `1px solid ${
-            !isEditMode
-              ? "rgba(255,255,255,0.1)"
-              : "rgba(59,130,246,0.5)"
-          }`,
-          borderRadius: 16,
-          padding: "12px 20px",
-          color: colors.text,
-          width: "100%",
-          fontSize: 18,
-          fontWeight: 600,
-          outline: "none"
-        }}
-      />
-      <span style={{ color: "#94a3b8" }}>م²</span>
+           {!isWanted && (
+  <div
+    style={{
+      display: "grid",
+      gridTemplateColumns: "repeat(auto-fit,minmax(180px,1fr))",
+      gap: 16
+    }}
+  >
+    {/* المساحة */}
+    <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
+      <label style={{ fontSize: 14, color: "#94a3b8" }}>المساحة</label>
+      <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
+        <FaRulerCombined style={{ color: "#fcd34d" }} />
+        <input
+          type="text"
+          name="area"
+          value={propertyData.area}
+          onChange={handleInputChange}
+          readOnly={!isEditMode}
+          style={{
+            background: "rgba(255,255,255,0.03)",
+            border: `1px solid ${
+              !isEditMode
+                ? "rgba(255,255,255,0.1)"
+                : "rgba(59,130,246,0.5)"
+            }`,
+            borderRadius: 16,
+            padding: "12px 20px",
+            color: colors.text,
+            width: "100%",
+            fontSize: 18,
+            fontWeight: 600,
+            outline: "none"
+          }}
+        />
+        <span style={{ color: "#94a3b8" }}>م²</span>
+      </div>
+    </div>
+
+    {/* الغرف */}
+    <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
+      <label style={{ fontSize: 14, color: "#94a3b8" }}>الغرف</label>
+      <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
+        <FaBed style={{ color: "#f9a8d4" }} />
+        <input
+          type="text"
+          name="rooms"
+          value={propertyData.rooms}
+          onChange={handleInputChange}
+          readOnly={!isEditMode}
+          style={{
+            background: "rgba(255,255,255,0.03)",
+            border: `1px solid ${
+              !isEditMode
+                ? "rgba(255,255,255,0.1)"
+                : "rgba(59,130,246,0.5)"
+            }`,
+            borderRadius: 16,
+            padding: "12px 20px",
+            color: colors.text,
+            width: "100%",
+            fontSize: 18,
+            fontWeight: 600,
+            outline: "none"
+          }}
+        />
+        <span style={{ color: "#94a3b8" }}>غرف</span>
+      </div>
+    </div>
+
+    {/* الحمامات */}
+    <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
+      <label style={{ fontSize: 14, color: "#94a3b8" }}>الحمامات</label>
+      <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
+        <FaBath style={{ color: "#7dd3fc" }} />
+        <input
+          type="text"
+          name="bathrooms"
+          value={propertyData.bathrooms}
+          onChange={handleInputChange}
+          readOnly={!isEditMode}
+          style={{
+            background: "rgba(255,255,255,0.03)",
+            border: `1px solid ${
+              !isEditMode
+                ? "rgba(255,255,255,0.1)"
+                : "rgba(59,130,246,0.5)"
+            }`,
+            borderRadius: 16,
+            padding: "12px 20px",
+            color: colors.text,
+            width: "100%",
+            fontSize: 18,
+            fontWeight: 600,
+            outline: "none"
+          }}
+        />
+        <span style={{ color: "#94a3b8" }}>حمام</span>
+      </div>
     </div>
   </div>
+)}
 
-  {/* الغرف */}
-  <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
-    <label style={{ fontSize: 14, color: "#94a3b8" }}>الغرف</label>
-    <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
-      <FaBed style={{ color: "#f9a8d4" }} />
-      <input
-        type="text"
-        name="rooms"
-        value={propertyData.rooms}
-        onChange={handleInputChange}
-        readOnly={!isEditMode}
-        style={{
-          background: "rgba(255,255,255,0.03)",
-          border: `1px solid ${
-            !isEditMode
-              ? "rgba(255,255,255,0.1)"
-              : "rgba(59,130,246,0.5)"
-          }`,
-          borderRadius: 16,
-          padding: "12px 20px",
-          color: colors.text,
-          width: "100%",
-          fontSize: 18,
-          fontWeight: 600,
-          outline: "none"
-        }}
-      />
-      <span style={{ color: "#94a3b8" }}>غرف</span>
-    </div>
-  </div>
-
-  {/* الحمامات */}
-  <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
-    <label style={{ fontSize: 14, color: "#94a3b8" }}>الحمامات</label>
-    <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
-      <FaBath style={{ color: "#7dd3fc" }} />
-      <input
-        type="text"
-        name="bathrooms"
-        value={propertyData.bathrooms}
-        onChange={handleInputChange}
-        readOnly={!isEditMode}
-        style={{
-          background: "rgba(255,255,255,0.03)",
-          border: `1px solid ${
-            !isEditMode
-              ? "rgba(255,255,255,0.1)"
-              : "rgba(59,130,246,0.5)"
-          }`,
-          borderRadius: 16,
-          padding: "12px 20px",
-          color: colors.text,
-          width: "100%",
-          fontSize: 18,
-          fontWeight: 600,
-          outline: "none"
-        }}
-      />
-      <span style={{ color: "#94a3b8" }}>حمام</span>
-    </div>
-  </div>
-</div>
-
-            )}
 
             {/* Description */}
             {!isWanted && (
