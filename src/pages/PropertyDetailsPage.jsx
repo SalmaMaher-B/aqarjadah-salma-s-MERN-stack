@@ -267,110 +267,96 @@ const PropertyDetailsPage = ( ) => {
       <div style={{ maxWidth: 1100, margin: '0 auto' }}>
 
         {/* Header */}
-        <div style={{ ...glassCardStyle, marginBottom: 20, borderTop: `6px solid ${colors.secondary}`, padding: 20 }}>
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: 16 }}>
-            <div>
-              {isEditMode ? (
-                 <FormInput
-                    name="title"
-                    value={propertyData.title}
-                    readOnly={!isEditMode}
-                    style={{ fontSize: 28, color: colors.accent, padding: 0 }}
-                 />
-              ) : (
-                <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
-  <label style={{ fontSize: 14, color: "#94a3b8" }}>عنوان العقار</label>
-  <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
-    <FaEdit style={{ color: "#93c5fd" }} />
-    <input
-      type="text"
-      name="title"
-      value={propertyData.title}
-      onChange={handleInputChange}
-      readOnly={!isEditMode}
-      style={{
-        background: "rgba(255,255,255,0.03)",
-        border: `1px solid ${
-          !isEditMode
-            ? "rgba(255,255,255,0.1)"
-            : "rgba(59,130,246,0.5)"
-        }`,
-        borderRadius: 16,
-        padding: "12px 20px",
-        color: colors.accent,
-        width: "100%",
-        fontSize: 28,
-        fontWeight: 700,
-        outline: "none",
-        cursor: !isEditMode ? "default" : "text"
-      }}
-      placeholder="عنوان العقار"
-    />
+<div style={{ ...glassCardStyle, marginBottom: 20, borderTop: `6px solid ${colors.secondary}`, padding: 20 }}>
+  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: 16 }}>
+    <div>
+      {/* Title Input */}
+      <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
+        <label style={{ fontSize: 14, color: "#94a3b8" }}>عنوان العقار</label>
+        <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
+          <FaEdit style={{ color: "#93c5fd" }} />
+          <input
+            type="text"
+            name="title"
+            value={propertyData.title}
+            onChange={handleInputChange}
+            readOnly={!isEditMode}
+            style={{
+              background: "rgba(255,255,255,0.03)",
+              border: `1px solid ${
+                !isEditMode ? "rgba(255,255,255,0.1)" : "rgba(59,130,246,0.5)"
+              }`,
+              borderRadius: 16,
+              padding: "12px 20px",
+              color: colors.accent,
+              width: "100%",
+              fontSize: 28,
+              fontWeight: 700,
+              outline: "none",
+              cursor: !isEditMode ? "default" : "text"
+            }}
+            placeholder="عنوان العقار"
+          />
+        </div>
+      </div>
+
+      {/* Type & Category */}
+      {!isEditMode && (
+        <p style={{ margin: '8px 0 0', color: '#94a3b8' }}>
+          {getCategoryLabel(propertyData.category)} • 
+          <span style={{ 
+            display: 'inline-block',
+            marginRight: 8,
+            padding: '4px 12px',
+            borderRadius: 8,
+            fontWeight: 700,
+            background: propertyData.type === 'sale' 
+              ? 'linear-gradient(135deg,#1e40af,#3b82f6)' 
+              : propertyData.type === 'rent'
+              ? 'linear-gradient(135deg,#059669,#10b981)'
+              : 'linear-gradient(135deg,#dc2626,#ef4444)',
+            color: 'white'
+          }}>
+            {propertyData.type === 'sale'
+              ? 'للبيع'
+              : propertyData.type === 'rent'
+              ? 'للإيجار'
+              : 'مطلوب'
+            }
+          </span>
+        </p>
+      )}
+    </div>
+
+    {/* Navigation & Logout */}
+    <div style={{ display: 'flex', gap: 12 }}>
+      <button onClick={() => navigate(-1)} style={{
+        background: "rgba(255,255,255,0.08)",
+        border: "1px solid rgba(255,255,255,0.15)",
+        borderRadius: 12,
+        padding: "8px 16px",
+        color: colors.text,
+        cursor: "pointer"
+      }}>
+        <FaArrowLeft /> رجوع
+      </button>
+
+      {isAdmin && (
+        <button onClick={handleLogout} style={{
+          background: "rgba(239,68,68,0.15)",
+          border: "1px solid rgba(239,68,68,0.4)",
+          borderRadius: 12,
+          padding: "8px 16px",
+          color: "#fecaca",
+          cursor: "pointer"
+        }}>
+          <FaSignOutAlt /> خروج
+        </button>
+      )}
+    </div>
   </div>
 </div>
 
-              )}
-              <p style={{ margin: '8px 0 0', color: '#94a3b8' }}>
-                {!isEditMode && (
-                  <>
-                    {getCategoryLabel(propertyData.category)} • 
-                    <span style={{ 
-                      display: 'inline-block',
-                      marginRight: 8,
-                      padding: '4px 12px',
-                      borderRadius: 8,
-                      fontWeight: 700,
-                      background: propertyData.type === 'sale' 
-                        ? 'linear-gradient(135deg,#1e40af,#3b82f6)' 
-                        : propertyData.type === 'rent'
-                        ? 'linear-gradient(135deg,#059669,#10b981)'
-                        : 'linear-gradient(135deg,#dc2626,#ef4444)',
-                      color: 'white'
-                    }}>
-                      {propertyData.type === 'sale'
-                        ? 'للبيع'
-                        : propertyData.type === 'rent'
-                        ? 'للإيجار'
-                        : 'مطلوب'
-                      }
-                    </span>
-                  </>
-                )}
-              </p>
-            </div>
-            <div style={{ display: 'flex', gap: 12 }}>
-              <button
-                onClick={() => navigate(-1)}
-                style={{
-                  background: "rgba(255,255,255,0.08)",
-                  border: "1px solid rgba(255,255,255,0.15)",
-                  borderRadius: 12,
-                  padding: "8px 16px",
-                  color: colors.text,
-                  cursor: "pointer"
-                }}
-              >
-                <FaArrowLeft /> رجوع
-              </button>
-
-              {isAdmin && (
-                <button
-                  onClick={handleLogout}
-                  style={{
-                    background: "rgba(239,68,68,0.15)",
-                    border: "1px solid rgba(239,68,68,0.4)",
-                    borderRadius: 12,
-                    padding: "8px 16px",
-                    color: "#fecaca",
-                    cursor: "pointer"
-                  }}
-                >
-                  <FaSignOutAlt /> خروج
-                </button>
-              )}
-            </div>
-          </div>
-        </div>
 
         {/* رسائل */}
         {message.text && (
