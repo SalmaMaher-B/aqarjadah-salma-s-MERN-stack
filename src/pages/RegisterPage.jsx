@@ -5,7 +5,7 @@ import { FaPhone, FaWhatsapp, FaEnvelope, FaLock, FaEye, FaEyeSlash, FaUserPlus 
 import { useAuth } from '../context/AuthContext';
 
 
-const API_BASE = 'http://localhost:5000';
+const API_BASE = 'https://backend-mern-stack-aqarjadah.vercel.app';
 
 const RegisterPage = () => {
   const navigate = useNavigate();
@@ -422,5 +422,6 @@ const RegisterPage = () => {
     </div>
   );
 };
+
 
 export default RegisterPage;
