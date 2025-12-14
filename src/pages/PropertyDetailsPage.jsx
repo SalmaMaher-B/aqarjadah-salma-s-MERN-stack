@@ -6,7 +6,7 @@ import {
   FaImage, FaTimes, FaEdit, FaTrash, FaSave, FaSignOutAlt, FaArrowLeft
 } from 'react-icons/fa';
 
-const API_BASE = 'https://backend-mern-stack-aqarjadah.vercel.app';
+const API_BASE = 'http://localhost:5000';
 
 const PropertyDetailsPage = ( ) => {
   const { id } = useParams();
@@ -543,78 +543,22 @@ const PropertyDetailsPage = ( ) => {
             {/* Price */}
             {isWanted ? (
                  <div style={{ display: 'flex', gap: 16 }}>
-                    <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
-  <label style={{ fontSize: 14, color: "#94a3b8" }}>السعر من</label>
-  <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
-    <FaDollarSign style={{ color: "#93c5fd" }} />
-    <input
-      type="text"
-      name="priceFrom"
-      value={propertyData.priceFrom}
-      onChange={handleInputChange}
-      readOnly={!isEditMode}
-      style={{
-        background: "rgba(255,255,255,0.03)",
-        border: `1px solid ${
-          !isEditMode
-            ? "rgba(255,255,255,0.1)"
-            : "rgba(59,130,246,0.5)"
-        }`,
-        borderRadius: 16,
-        padding: "12px 20px",
-        color: colors.text,
-        width: "100%",
-        fontSize: 18,
-        fontWeight: 600,
-        outline: "none",
-        cursor: !isEditMode ? "default" : "text"
-      }}
-    />
-    <span style={{ color: "#94a3b8" }}>ريال</span>
-  </div>
-</div>
-
-                    <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
-  <label style={{ fontSize: 14, color: "#94a3b8" }}>السعر إلى</label>
-  <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
-    <FaDollarSign style={{ color: "#93c5fd" }} />
-    <input
-      type="text"
-      name="priceTo"
-      value={propertyData.priceTo}
-      onChange={handleInputChange}
-      readOnly={!isEditMode}
-      style={{
-        background: "rgba(255,255,255,0.03)",
-        border: `1px solid ${
-          !isEditMode
-            ? "rgba(255,255,255,0.1)"
-            : "rgba(59,130,246,0.5)"
-        }`,
-        borderRadius: 16,
-        padding: "12px 20px",
-        color: colors.text,
-        width: "100%",
-        fontSize: 18,
-        fontWeight: 600,
-        outline: "none",
-        cursor: !isEditMode ? "default" : "text"
-      }}
-    />
-    <span style={{ color: "#94a3b8" }}>ريال</span>
-  </div>
-</div>
-
+                    <FormInput name="priceFrom" value={propertyData.priceFrom} readOnly={!isEditMode} icon={<FaDollarSign style={{ color: '#93c5fd' }} />} label="السعر من" unit="ريال" />
+                    <FormInput name="priceTo" value={propertyData.priceTo} readOnly={!isEditMode} icon={<FaDollarSign style={{ color: '#93c5fd' }} />} label="السعر إلى" unit="ريال" />
                  </div>
             ) : (
-                <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
-  <label style={{ fontSize: 14, color: "#94a3b8" }}>السعر</label>
+                <FormInput name="price" value={propertyData.price} readOnly={!isEditMode} icon={<FaDollarSign style={{ color: '#93c5fd' }} />} label="السعر" unit="ريال" />
+            )}
+
+            {/* Location */} 
+            <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
+  <label style={{ fontSize: 14, color: "#94a3b8" }}>الموقع</label>
   <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
-    <FaDollarSign style={{ color: "#93c5fd" }} />
+    <FaMapMarkerAlt style={{ color: "#a5b4fc" }} />
     <input
       type="text"
-      name="price"
-      value={propertyData.price}
+      name="location"
+      value={propertyData.location}
       onChange={handleInputChange}
       readOnly={!isEditMode}
       style={{
@@ -634,26 +578,113 @@ const PropertyDetailsPage = ( ) => {
         cursor: !isEditMode ? "default" : "text"
       }}
     />
-    <span style={{ color: "#94a3b8" }}>ريال</span>
   </div>
 </div>
 
-            )}
-
-            {/* Location */}
-            <FormInput name="location" value={propertyData.location} readOnly={!isEditMode} icon={<FaMapMarkerAlt style={{ color: '#a5b4fc' }} />} label="الموقع" />
 
             {/* Stats */}
             {!isWanted && (
-              <div style={{ 
-                display: 'grid', 
-                gridTemplateColumns: 'repeat(auto-fit,minmax(180px,1fr))', 
-                gap: 16 
-              }}>
-                <FormInput name="area" value={propertyData.area} readOnly={!isEditMode} icon={<FaRulerCombined style={{ color: '#fcd34d' }} />} label="المساحة" unit="م²" />
-                <FormInput name="rooms" value={propertyData.rooms} readOnly={!isEditMode} icon={<FaBed style={{ color: '#f9a8d4' }} />} label="الغرف" unit="غرف" />
-                <FormInput name="bathrooms" value={propertyData.bathrooms} readOnly={!isEditMode} icon={<FaBath style={{ color: '#7dd3fc' }} />} label="الحمامات" unit="حمام" />
-              </div>
+             <div
+  style={{
+    display: "grid",
+    gridTemplateColumns: "repeat(auto-fit,minmax(180px,1fr))",
+    gap: 16
+  }}
+>
+  {/* المساحة */}
+  <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
+    <label style={{ fontSize: 14, color: "#94a3b8" }}>المساحة</label>
+    <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
+      <FaRulerCombined style={{ color: "#fcd34d" }} />
+      <input
+        type="text"
+        name="area"
+        value={propertyData.area}
+        onChange={handleInputChange}
+        readOnly={!isEditMode}
+        style={{
+          background: "rgba(255,255,255,0.03)",
+          border: `1px solid ${
+            !isEditMode
+              ? "rgba(255,255,255,0.1)"
+              : "rgba(59,130,246,0.5)"
+          }`,
+          borderRadius: 16,
+          padding: "12px 20px",
+          color: colors.text,
+          width: "100%",
+          fontSize: 18,
+          fontWeight: 600,
+          outline: "none"
+        }}
+      />
+      <span style={{ color: "#94a3b8" }}>م²</span>
+    </div>
+  </div>
+
+  {/* الغرف */}
+  <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
+    <label style={{ fontSize: 14, color: "#94a3b8" }}>الغرف</label>
+    <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
+      <FaBed style={{ color: "#f9a8d4" }} />
+      <input
+        type="text"
+        name="rooms"
+        value={propertyData.rooms}
+        onChange={handleInputChange}
+        readOnly={!isEditMode}
+        style={{
+          background: "rgba(255,255,255,0.03)",
+          border: `1px solid ${
+            !isEditMode
+              ? "rgba(255,255,255,0.1)"
+              : "rgba(59,130,246,0.5)"
+          }`,
+          borderRadius: 16,
+          padding: "12px 20px",
+          color: colors.text,
+          width: "100%",
+          fontSize: 18,
+          fontWeight: 600,
+          outline: "none"
+        }}
+      />
+      <span style={{ color: "#94a3b8" }}>غرف</span>
+    </div>
+  </div>
+
+  {/* الحمامات */}
+  <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
+    <label style={{ fontSize: 14, color: "#94a3b8" }}>الحمامات</label>
+    <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
+      <FaBath style={{ color: "#7dd3fc" }} />
+      <input
+        type="text"
+        name="bathrooms"
+        value={propertyData.bathrooms}
+        onChange={handleInputChange}
+        readOnly={!isEditMode}
+        style={{
+          background: "rgba(255,255,255,0.03)",
+          border: `1px solid ${
+            !isEditMode
+              ? "rgba(255,255,255,0.1)"
+              : "rgba(59,130,246,0.5)"
+          }`,
+          borderRadius: 16,
+          padding: "12px 20px",
+          color: colors.text,
+          width: "100%",
+          fontSize: 18,
+          fontWeight: 600,
+          outline: "none"
+        }}
+      />
+      <span style={{ color: "#94a3b8" }}>حمام</span>
+    </div>
+  </div>
+</div>
+
             )}
 
             {/* Description */}
