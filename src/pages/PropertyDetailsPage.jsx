@@ -543,7 +543,7 @@ const PropertyDetailsPage = ( ) => {
             {/* Price */}
             {isWanted ? (
                  <div style={{ display: 'flex', gap: 16 }}>
-                    <FormInput name="priceFrom" value={propertyData.priceFrom} readOnly={!isEditMode} icon={<FaDollarSign style={{ color: '#93c5fd' }} />} label="السعر من" unit="ريال" />
+                    <input name="priceFrom" value={propertyData.priceFrom} readOnly={!isEditMode} icon={<FaDollarSign style={{ color: '#93c5fd' }} />} label="السعر من" unit="ريال" />
                     <FormInput name="priceTo" value={propertyData.priceTo} readOnly={!isEditMode} icon={<FaDollarSign style={{ color: '#93c5fd' }} />} label="السعر إلى" unit="ريال" />
                  </div>
             ) : (
@@ -612,3 +612,4 @@ const PropertyDetailsPage = ( ) => {
 };
 
 export default PropertyDetailsPage;
+
