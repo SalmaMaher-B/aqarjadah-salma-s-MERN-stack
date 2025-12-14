@@ -555,14 +555,91 @@ const PropertyDetailsPage = ( ) => {
           <div style={{ display: 'grid', gap: 24 }}>
 
             {/* Price */}
-            {isWanted ? (
-                 <div style={{ display: 'flex', gap: 16 }}>
-                    <FormInput name="priceFrom" value={propertyData.priceFrom} readOnly={!isEditMode} icon={<FaDollarSign style={{ color: '#93c5fd' }} />} label="السعر من" unit="ريال" />
-                    <FormInput name="priceTo" value={propertyData.priceTo} readOnly={!isEditMode} icon={<FaDollarSign style={{ color: '#93c5fd' }} />} label="السعر إلى" unit="ريال" />
-                 </div>
-            ) : (
-                <FormInput name="price" value={propertyData.price} readOnly={!isEditMode} icon={<FaDollarSign style={{ color: '#93c5fd' }} />} label="السعر" unit="ريال" />
-            )}
+           {isWanted ? (
+  <div style={{ display: 'flex', gap: 16 }}>
+    <div style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
+      <label style={{ fontSize: 14, color: "#94a3b8" }}>السعر من</label>
+      <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
+        <FaDollarSign style={{ color: '#93c5fd' }} />
+        <input
+          type="text"
+          name="priceFrom"
+          value={propertyData.priceFrom}
+          onChange={handleInputChange}
+          readOnly={!isEditMode}
+          style={{
+            background: "rgba(255,255,255,0.03)",
+            border: `1px solid ${!isEditMode ? "rgba(255,255,255,0.1)" : "rgba(59,130,246,0.5)"}`,
+            borderRadius: 16,
+            padding: "12px 20px",
+            color: colors.text,
+            width: "100%",
+            fontSize: 18,
+            fontWeight: 600,
+            outline: "none",
+            cursor: !isEditMode ? "default" : "text"
+          }}
+        />
+        <span style={{ color: "#94a3b8" }}>ريال</span>
+      </div>
+    </div>
+
+    <div style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
+      <label style={{ fontSize: 14, color: "#94a3b8" }}>السعر إلى</label>
+      <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
+        <FaDollarSign style={{ color: '#93c5fd' }} />
+        <input
+          type="text"
+          name="priceTo"
+          value={propertyData.priceTo}
+          onChange={handleInputChange}
+          readOnly={!isEditMode}
+          style={{
+            background: "rgba(255,255,255,0.03)",
+            border: `1px solid ${!isEditMode ? "rgba(255,255,255,0.1)" : "rgba(59,130,246,0.5)"}`,
+            borderRadius: 16,
+            padding: "12px 20px",
+            color: colors.text,
+            width: "100%",
+            fontSize: 18,
+            fontWeight: 600,
+            outline: "none",
+            cursor: !isEditMode ? "default" : "text"
+          }}
+        />
+        <span style={{ color: "#94a3b8" }}>ريال</span>
+      </div>
+    </div>
+  </div>
+) : (
+  <div style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
+    <label style={{ fontSize: 14, color: "#94a3b8" }}>السعر</label>
+    <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
+      <FaDollarSign style={{ color: '#93c5fd' }} />
+      <input
+        type="text"
+        name="price"
+        value={propertyData.price}
+        onChange={handleInputChange}
+        readOnly={!isEditMode}
+        style={{
+          background: "rgba(255,255,255,0.03)",
+          border: `1px solid ${!isEditMode ? "rgba(255,255,255,0.1)" : "rgba(59,130,246,0.5)"}`,
+          borderRadius: 16,
+          padding: "12px 20px",
+          color: colors.text,
+          width: "100%",
+          fontSize: 18,
+          fontWeight: 600,
+          outline: "none",
+          cursor: !isEditMode ? "default" : "text"
+        }}
+      />
+      <span style={{ color: "#94a3b8" }}>ريال</span>
+    </div>
+  </div>
+)}
+
 
             {/* Location */} 
             <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
