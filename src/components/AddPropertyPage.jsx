@@ -127,7 +127,7 @@ const AddPropertyPage = () => {
 
       const token = localStorage.getItem("token");
 
-      const response = await fetch("http://localhost:5000/api/ads", {
+      const response = await fetch("https://backend-mern-stack-aqarjadah.vercel.app/api/ads", {
         method: "POST",
         body: JSON.stringify(payload),
         headers: {
@@ -511,5 +511,6 @@ const AddPropertyPage = () => {
     </div>
   );
 };
+
 
 export default AddPropertyPage;
