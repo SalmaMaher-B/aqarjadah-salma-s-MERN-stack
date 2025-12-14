@@ -6,7 +6,7 @@ import {
   FaImage, FaTimes, FaEdit, FaTrash, FaSave, FaSignOutAlt, FaArrowLeft
 } from 'react-icons/fa';
 
-const API_BASE = 'http://localhost:5000';
+const API_BASE = 'https://backend-mern-stack-aqarjadah.vercel.app';
 
 const PropertyDetailsPage = ( ) => {
   const { id } = useParams();
