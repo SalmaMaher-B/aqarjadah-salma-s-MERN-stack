@@ -201,7 +201,7 @@ const PropertyDetailsPage = ( ) => {
   };
   
   // *** START: Helper component for input fields ***
-  const FormInput = ({ name, value, icon, label, unit, readOnly, ...props }) => (
+  const input = ({ name, value, icon, label, unit, readOnly, ...props }) => (
     <div style={{
       background: 'rgba(255, 255, 255, 0.03)',
       border: `1px solid ${readOnly ? 'rgba(255, 255, 255, 0.1)' : 'rgba(59, 130, 246, 0.5)'}`,
@@ -271,7 +271,7 @@ const PropertyDetailsPage = ( ) => {
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: 16 }}>
             <div>
               {isEditMode ? (
-                 <FormInput
+                 <input
                     name="title"
                     value={propertyData.title}
                     readOnly={!isEditMode}
@@ -543,15 +543,15 @@ const PropertyDetailsPage = ( ) => {
             {/* Price */}
             {isWanted ? (
                  <div style={{ display: 'flex', gap: 16 }}>
-                    <FormInput name="priceFrom" value={propertyData.priceFrom} readOnly={!isEditMode} icon={<FaDollarSign style={{ color: '#93c5fd' }} />} label="السعر من" unit="ريال" />
-                    <FormInput name="priceTo" value={propertyData.priceTo} readOnly={!isEditMode} icon={<FaDollarSign style={{ color: '#93c5fd' }} />} label="السعر إلى" unit="ريال" />
+                    <input name="priceFrom" value={propertyData.priceFrom} readOnly={!isEditMode} icon={<FaDollarSign style={{ color: '#93c5fd' }} />} label="السعر من" unit="ريال" />
+                    <input name="priceTo" value={propertyData.priceTo} readOnly={!isEditMode} icon={<FaDollarSign style={{ color: '#93c5fd' }} />} label="السعر إلى" unit="ريال" />
                  </div>
             ) : (
-                <FormInput name="price" value={propertyData.price} readOnly={!isEditMode} icon={<FaDollarSign style={{ color: '#93c5fd' }} />} label="السعر" unit="ريال" />
+                <input name="price" value={propertyData.price} readOnly={!isEditMode} icon={<FaDollarSign style={{ color: '#93c5fd' }} />} label="السعر" unit="ريال" />
             )}
 
             {/* Location */}
-            <FormInput name="location" value={propertyData.location} readOnly={!isEditMode} icon={<FaMapMarkerAlt style={{ color: '#a5b4fc' }} />} label="الموقع" />
+            <input name="location" value={propertyData.location} readOnly={!isEditMode} icon={<FaMapMarkerAlt style={{ color: '#a5b4fc' }} />} label="الموقع" />
 
             {/* Stats */}
             {!isWanted && (
@@ -560,9 +560,9 @@ const PropertyDetailsPage = ( ) => {
                 gridTemplateColumns: 'repeat(auto-fit,minmax(180px,1fr))', 
                 gap: 16 
               }}>
-                <FormInput name="area" value={propertyData.area} readOnly={!isEditMode} icon={<FaRulerCombined style={{ color: '#fcd34d' }} />} label="المساحة" unit="م²" />
-                <FormInput name="rooms" value={propertyData.rooms} readOnly={!isEditMode} icon={<FaBed style={{ color: '#f9a8d4' }} />} label="الغرف" unit="غرف" />
-                <FormInput name="bathrooms" value={propertyData.bathrooms} readOnly={!isEditMode} icon={<FaBath style={{ color: '#7dd3fc' }} />} label="الحمامات" unit="حمام" />
+                <input name="area" value={propertyData.area} readOnly={!isEditMode} icon={<FaRulerCombined style={{ color: '#fcd34d' }} />} label="المساحة" unit="م²" />
+                <input name="rooms" value={propertyData.rooms} readOnly={!isEditMode} icon={<FaBed style={{ color: '#f9a8d4' }} />} label="الغرف" unit="غرف" />
+                <input name="bathrooms" value={propertyData.bathrooms} readOnly={!isEditMode} icon={<FaBath style={{ color: '#7dd3fc' }} />} label="الحمامات" unit="حمام" />
               </div>
             )}
 
@@ -612,4 +612,3 @@ const PropertyDetailsPage = ( ) => {
 };
 
 export default PropertyDetailsPage;
-
